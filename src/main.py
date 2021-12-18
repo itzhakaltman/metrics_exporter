@@ -1,22 +1,31 @@
 #!/usr/bin/env python3
-from prometheus_client import start_http_server, Summary
+import http.server
 import random
-import time
+from prometheus_client import start_http_server, Counter
 
-# Create a metric to track time spent and requests made.
-REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing request')
+REQUEST_COUNT = Counter('app_requests_count', 'total app http request count', ['app_name', 'endpoint'])
+RANDOM_COUNT = Counter('app_random_count', 'increment counter by random value')
 
-
-# Decorate function with metric.
-@REQUEST_TIME.time()
-def process_request(t):
-    """A dummy function that takes some time."""
-    time.sleep(t)
+APP_PORT = 8000
+METRICS_PORT = 8001
 
 
-if __name__ == '__main__':
-    # Start up the server to expose the metrics.
-    start_http_server(8000)
-    # Generate some requests.
-    while True:
-        process_request(random.random())
+class HandleRequests(http.server.BaseHTTPRequestHandler):
+
+    def do_GET(self):
+        REQUEST_COUNT.labels('prom_python_app', self.path).inc()
+        random_val = random.random() * 10
+        RANDOM_COUNT.inc(random_val)
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(bytes(
+            "<!DOCTYPE html><html><head><title>metrics_generator</title><style>body{width:30em;margin: 0 auto;font-family: Tahoma, Verdana, Arial, sans-serif;}</style></head><body><h1>Welcome to the metrics generator!</h1><p><em>Phantasie ist wichtiger als Wissen. Wissen ist begrenzt, Phantasie aber umfa&#223t die ganze Welt.</em></p><p><em>Albert Einstein.</em></p></body></html>",
+            "utf-8"))
+        self.wfile.close()
+
+
+if __name__ == "__main__":
+    start_http_server(METRICS_PORT)
+    server = http.server.HTTPServer(('localhost', APP_PORT), HandleRequests)
+    server.serve_forever()
