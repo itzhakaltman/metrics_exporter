@@ -17,4 +17,4 @@ COPY ./src .
 ENV PATH=/root/.local:$PATH
 
 # make sure you include the -u flag to have our stdout logged
-CMD ["python", "-u", "./main.py"]
+CMD ["python", "-u", "./code/main.py"]
