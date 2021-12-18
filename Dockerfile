@@ -13,8 +13,11 @@ WORKDIR /code
 COPY --from=builder /root/.local /root/.local
 COPY ./src .
 
+EXPOSE 8000
+EXPOSE 8001
+
 # update PATH
 ENV PATH=/root/.local:$PATH
 
 # make sure you include the -u flag to have our stdout logged
-CMD ["python", "-u", "./code/main.py"]
+CMD ["python", "-u", "./main.py"]
