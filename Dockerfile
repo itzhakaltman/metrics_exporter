@@ -11,7 +11,7 @@ WORKDIR /code
 
 # copy only the dependencies that are needed for our application and the source files
 COPY --from=builder /root/.local /root/.local
-#COPY ./src .
+COPY ./src .
 
 # update PATH
 ENV PATH=/root/.local:$PATH
