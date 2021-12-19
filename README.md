@@ -1,2 +1,1 @@
-# metrics_exporter
-Prometheus Metrics Exporter
+# Prometheus Metrics Exporter

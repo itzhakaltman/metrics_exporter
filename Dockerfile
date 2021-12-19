@@ -1,3 +1,5 @@
+# docker buildx build -t metrics_exporter . --platform linux/amd64
+
 FROM python:3.8 AS builder
 COPY requirements.txt .
 RUN pip install --user -r requirements.txt
