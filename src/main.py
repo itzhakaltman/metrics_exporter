@@ -1,5 +1,56 @@
 #!/usr/bin/env python3
 
+# read config
+
+import json
+import yaml
+
+def read_json(file_path):
+    with open(file_path, "r") as f:
+        return json.load(f)
+
+def read_yaml(file_path):
+    with open(file_path, "r") as f:
+        return yaml.safe_load(f)
+
+assert read_json("data/sample.json") == read_yaml("data/sample.yaml")
+
+# check config
+import pytest
+
+def test_validation_json():
+    with pytest.raises(FileNotFoundError):
+        read_json(file_path="source/data/non_existing_file.json")
+
+    with pytest.raises(json.decoder.JSONDecodeError):
+        # only show the first error
+        read_json(file_path="source/data/sample_invalid.json")
+        read_json(file_path="source/data/sample_invalid.yaml")
+
+def test_validation_yaml():
+    with pytest.raises(FileNotFoundError):
+        read_yaml(file_path="source/data/non_existing_file.yaml")
+
+    with pytest.raises(yaml.scanner.ScannerError):
+        # only show the first error
+        read_yaml(file_path="source/data/sample_invalid.yaml")
+
+    with pytest.raises(yaml.parser.ParserError):
+        # only show the first error
+        read_yaml(file_path="source/data/sample_invalid.json")
+
+#
+
+
+
+
+# import subprocess
+
+
+# curl = subprocess.run(["echo \"demo_metric 123\" | curl –data-binary @- http://loalhost:9091/metrics/job/demo_pg_job?instance/demo_instance/event/add"])
+
+#!/usr/bin/env python3
+
 import http.server
 import random
 from prometheus_client import start_http_server, Counter
