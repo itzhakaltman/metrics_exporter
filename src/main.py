@@ -39,11 +39,6 @@ def test_validation_yaml():
         # only show the first error
         read_yaml(file_path="source/data/sample_invalid.json")
 
-#
-
-
-
-
 # import subprocess
 
 
