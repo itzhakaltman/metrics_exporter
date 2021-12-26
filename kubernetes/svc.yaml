@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: m-exp
+  namespace: default
+  labels:
+    name: m-exp
+spec:
+  type: LoadBalancer
+#  loadBalancerIP: 10.10.10.10
+  ports:
+    - port: 8080
+      targetPort: 9999
+      name: m-exp
+  selector:
+    name: m-exp

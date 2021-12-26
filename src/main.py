@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# https://towardsdatascience.com/from-novice-to-expert-how-to-write-a-configuration-file-in-python-273e171a8eb3
+
 # read config
 
 import json

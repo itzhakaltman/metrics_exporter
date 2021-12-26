@@ -1,11 +1,10 @@
 APP:
-  ENVIRONMENT: test
-  DEBUG: True
-  # Only accept True or False
+  ENVIRONMENT: dev
+  DEBUG: True #False
 
 DATABASE:
-  USERNAME: xiaoxu
-  PASSWORD: xiaoxu
-  HOST: 127.0.0.1
+  USERNAME: user
+  PASSWORD: password
+  HOST: 192.168.192.2
   PORT: 5432
-  DB: xiaoxu_database
+  DB: metrics_exporter

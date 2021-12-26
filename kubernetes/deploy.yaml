@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: m-exp
+  namespace: default
+  labels:
+    name: m-exp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: m-exp
+  template:
+    metadata:
+      name: m-exp
+      labels:
+        name: m-exp
+    spec:
+      volumes:
+       - name: config-volume
+         configMap:
+          name: m-exp-config
+      containers:
+        - name: drm
+          image: xxx/xxx:1.0.0
+#          imagePullPolicy: Always
+          volumeMounts:
+          - name: config-volume
+            subPath: config.yaml
+            mountPath: "/config/config.yaml"
+      imagePullSecrets:
+        - name: xxx
+      dnsPolicy: ClusterFirstWithHostNet
