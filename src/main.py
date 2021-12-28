@@ -3,9 +3,9 @@
 # https://towardsdatascience.com/from-novice-to-expert-how-to-write-a-configuration-file-in-python-273e171a8eb3
 
 import yaml
-import pytest
+import json
 
-config_file = '/config/config.yaml'
+config_file = '/Users/itzhak/Documents/GitHub/metrics_exporter/config/config.yaml'
 
 
 def read_yaml(config_file):
@@ -13,22 +13,8 @@ def read_yaml(config_file):
         return yaml.safe_load(f)
 
 
-def test_validation_yaml(config_file):
-    with pytest.raises(FileNotFoundError):
-        read_yaml(config_file)
 
-    with pytest.raises(yaml.scanner.ScannerError):
-        # only show the first error
-        read_yaml(config_file)
+print(read_yaml(config_file))
+#if __name__ == "__main__":
+#    read_yaml(config_file)
 
-    with pytest.raises(yaml.parser.ParserError):
-        # only show the first error
-        read_yaml(config_file)
-
-
-if __name__ == "__main__":
-    config = read_yaml(config_file)
-    test = test_validation_yaml(config_file)
-    print(config)
-    print(test)
-    sys.exit(0)

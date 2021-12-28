@@ -4,9 +4,13 @@ APP:
   ENVIRONMENT: dev
   DEBUG: True #False
 
+PUSHGATEWAY:
+  HOST: 192.168.192.2
+  PORT: 8080
+
 DATABASE:
   USERNAME: user
   PASSWORD: password
-  HOST: 192.168.192.2
+  HOST: 192.168.192.3
   PORT: 5432
   DB: metrics_exporter
