@@ -1,5 +1,5 @@
 # https://towardsdatascience.com/from-novice-to-expert-how-to-write-a-configuration-file-in-python-273e171a8eb3
 
 # PUSHGATEWAY:
-  HOST: 192.168.192.2
+  HOST: www.google.com
   PORT: 8080
