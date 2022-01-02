@@ -3,3 +3,23 @@
 # PUSHGATEWAY:
   HOST: www.google.com
   PORT: 8080
+
+# METRICS
+  K1: test
+  V1: test
+  K2: test
+  V2: test
+  K3: test
+  V3: test
+  K4: test
+  V4: test
+  K5: test
+  V5: test
+  K6: test
+  V6: test
+  K7: test
+  V7: test
+  K8: test
+  V8: test
+  K9: test
+  V9: test

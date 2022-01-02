@@ -12,7 +12,7 @@ def read_yaml(config_file):
 
 
 config = read_yaml(config_file)
-# print(config)
+print(config)
 # print(config["HOST"])
 # print(config["PORT"])
 
