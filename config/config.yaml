@@ -1,25 +1,18 @@
 # https://towardsdatascience.com/from-novice-to-expert-how-to-write-a-configuration-file-in-python-273e171a8eb3
 
 # PUSHGATEWAY:
-  HOST: www.google.com
-  PORT: 8080
+  PGW HOST: 192.168.192.2
+  PGW PORT: 8080
+  JOB NAME: demo_pg_job
+  LABEL NAME: instance
+  LABEL VALUE: demo_instance
+
+# KAFKA
+  KAFKA: 10.0.0.10
+  TOPIC PORT: 9020
+  TOPIC: TEST
+  KEY: TEST
 
 # METRICS
-  K1: test
-  V1: test
-  K2: test
-  V2: test
-  K3: test
-  V3: test
-  K4: test
-  V4: test
-  K5: test
-  V5: test
-  K6: test
-  V6: test
-  K7: test
-  V7: test
-  K8: test
-  V8: test
-  K9: test
-  V9: test
+  METRIC NAME: demo_metric
+  METRIC VALUE: 123
