@@ -1,8 +1,8 @@
 # https://towardsdatascience.com/from-novice-to-expert-how-to-write-a-configuration-file-in-python-273e171a8eb3
 
 # PUSHGATEWAY:
-  PGW HOST: 192.168.192.2
-  PGW PORT: 8080
+  PGW HOST: 10.0.0.1
+  PGW PORT: 9091
   JOB NAME: demo_pg_job
   LABEL NAME: instance
   LABEL VALUE: demo_instance
