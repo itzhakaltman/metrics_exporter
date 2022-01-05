@@ -24,27 +24,11 @@ KEY = config["KEY"]
 METRIC_NAME = config["METRIC NAME"]
 METRIC_VALUE = config["METRIC VALUE"]
 
-API_ENDPOINT = 'http://{}:{}/metrics/job/{}/{}/{}'.format(PGW_HOST, PGW_PORT, JOB_NAME, LABEL_NAME,
-                                                                    LABEL_VALUE)
-#data = '{} {}'.format(METRIC_NAME, METRIC_VALUE)
-data = 'demo 321'
+API_ENDPOINT = 'http://{}:{}/metrics/job/{}/{}/{}/new_label/new_value'.format(PGW_HOST, PGW_PORT, JOB_NAME, LABEL_NAME,
+                                                                              LABEL_VALUE)
+data = 'demo 321\n'
+
 request = requests.post(url=API_ENDPOINT, data=data)
 
-print(API_ENDPOINT)
-print(data)
-print(request.text)
-
-# echo "demo_metric 123" | curl --data-binary @- http://localhost:9091/metrics/job/demo_pg_job/instance/demo_instance/event/add
-
-
-# BODY - echo “demo_metric 123”
-
-# curl = subprocess.run(['curl',
-#                       'http://{}:{}/metrics/job/{}/{}/{}/event/add'.format(pgw_host, pgw_port, job_name, label_name,
-#                                                                            label_value)])
-# curl -X POST --header "Content-Type: application/json" --data '{"key1":"value1", "key2":"value2"}' http://8.8.8.8//
-
-# curl = ['curl', 'http://{}:{}/metrics/job/{}/{}/{}/event/add'.format(pgw_host, pgw_port, job_name, label_name, label_value)]
-
-
-# print(curl)
+# print(API_ENDPOINT)
+# print(request.text)
