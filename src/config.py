@@ -11,7 +11,7 @@ def read_yaml(config_file):
 
 
 config = read_yaml(config_file)
-print(config)
+# print(config)
 
 PGW_HOST = config["PGW HOST"]
 PGW_PORT = config["PGW PORT"]
