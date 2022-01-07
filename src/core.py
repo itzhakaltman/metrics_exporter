@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 from kafka import KafkaConsumer
+import requests
+from config import API_ENDPOINT
 
 # To consume latest messages and auto-commit offsets
 consumer = KafkaConsumer('m-exp',
@@ -12,6 +14,10 @@ for message in consumer:
     print("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
                                          message.offset, message.key,
                                          message.value))
+    data = 'demo 321\n'
+
+    request = requests.post(url=API_ENDPOINT, data=data)
+
 
 # consume earliest available messages, don't commit offsets
 KafkaConsumer(auto_offset_reset='earliest', enable_auto_commit=False)
@@ -37,3 +43,6 @@ consumer1 = KafkaConsumer('numtest',
 consumer2 = KafkaConsumer('numtest',
                           group_id='my-group',
                           bootstrap_servers='10.210.110.20:9092')
+
+
+

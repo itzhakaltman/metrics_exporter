@@ -8,9 +8,9 @@
   LABEL VALUE: demo_instance
 
 # KAFKA
-  KAFKA: 10.0.0.10
-  TOPIC PORT: 9020
-  TOPIC: TEST
+  KAFKA: 10.210.110.20
+  TOPIC PORT: 9092
+  TOPIC: m-exp
   KEY: TEST
 
 # METRICS
