@@ -22,7 +22,7 @@ spec:
           name: m-exp-config
       containers:
         - name: drm
-          image: xxx/xxx:1.0.0
+          image: xxx/xxx:0.0.0
 #          imagePullPolicy: Always
           volumeMounts:
           - name: config-volume
