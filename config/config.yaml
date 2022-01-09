@@ -8,8 +8,8 @@
   LABEL VALUE: demo_instance
 
 # KAFKA
-  KAFKA: 10.210.110.20
-  TOPIC PORT: 9092
+  KAFKA IP: 10.210.110.20
+  KAFKA PORT: 9092
   TOPIC: m-exp
   KEY: TEST
 
