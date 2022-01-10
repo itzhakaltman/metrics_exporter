@@ -10,7 +10,10 @@ spec:
 #  loadBalancerIP: 10.10.10.10
   ports:
     - port: 8080
-      targetPort: 9999
+      targetPort: 8080
       name: m-exp
+    - port: 8090
+      targetPort: 8090
+      name: m-exp2
   selector:
     name: m-exp

@@ -15,16 +15,16 @@ config = read_yaml(config_file)
 
 PGW_HOST = config["PGW HOST"]
 PGW_PORT = config["PGW PORT"]
-JOB_NAME = config["JOB NAME"]
-LABEL_NAME = config["LABEL NAME"]
-LABEL_VALUE = config["LABEL VALUE"]
+PGW_JOB_NAME = config["JOB NAME"]
+PGW_LABEL_NAME = config["LABEL NAME"]
+PGW_LABEL_VALUE = config["LABEL VALUE"]
 KAFKA_IP = config["KAFKA IP"]
 KAFKA_PORT = config["KAFKA PORT"]
-TOPIC = config["TOPIC"]
-KEY = config["KEY"]
+KAFKA_TOPIC = config["TOPIC"]
+KAFKA_KEY = config["KEY"]
 METRIC_NAME = config["METRIC NAME"]
-METRIC_VALUE = config["METRIC VALUE"]
 
-API_ENDPOINT = 'http://{}:{}/metrics/job/{}/{}/{}'.format(PGW_HOST, PGW_PORT, JOB_NAME, LABEL_NAME, LABEL_VALUE)
+
+API_ENDPOINT = 'http://{}:{}/metrics/job/{}/{}/{}'.format(PGW_HOST, PGW_PORT, PGW_JOB_NAME, PGW_LABEL_NAME, PGW_LABEL_VALUE)
 # print(API_ENDPOINT)
 # print(request.text)
