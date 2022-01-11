@@ -10,6 +10,5 @@ COPY --from=builder /root/.local /root/.local
 COPY ./src .
 COPY ./config .
 EXPOSE 8080
-EXPOSE 8090
 ENV PATH=/root/.local:$PATH
 CMD ["python", "-u", "./main.py"]

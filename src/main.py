@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
+
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from kafka import KafkaConsumer
 import requests
 from config import API_ENDPOINT
 from config import METRIC_NAME
+from config import BOOTSTRAP_SERVER
+from config import KAFKA_TOPIC
+from config import GROUP_ID
 
 # To consume latest messages and auto-commit offsets
-consumer = KafkaConsumer('m-exp',
-                         group_id='my-group',
-                         bootstrap_servers=['10.210.110.20:9092'])
+consumer = KafkaConsumer(KAFKA_TOPIC,
+                         group_id=GROUP_ID,
+                         bootstrap_servers=[BOOTSTRAP_SERVER])
 for message in consumer:
     # message value and key are raw bytes -- decode if necessary!
     # e.g., for unicode: `message.value.decode('utf-8')`
@@ -18,15 +23,9 @@ for message in consumer:
     message_value_string = message.value.decode("utf-8")
     message_value_dict = json.loads(message_value_string)
     message_value_value = message_value_dict[METRIC_NAME]
-    # print(METRIC_NAME)
-    # print(message_value_value)
 
     data = str(METRIC_NAME) + ' ' + str(message_value_value) + '\n'
     print(data)
-
-
-    # data = 'demo 321\n'
-
     request = requests.post(url=API_ENDPOINT, data=data)
 
 
@@ -46,14 +45,26 @@ KafkaConsumer(consumer_timeout_ms=1000)
 consumer = KafkaConsumer()
 consumer.subscribe(pattern='^awesome.*')
 
-# Use multiple consumers in parallel w/ 0.9 kafka brokers
-# typically you would run each on a different server / process / CPU
-consumer1 = KafkaConsumer('numtest',
-                          group_id='my-group',
-                          bootstrap_servers='10.210.110.20:9092')
-consumer2 = KafkaConsumer('numtest',
-                          group_id='my-group',
-                          bootstrap_servers='10.210.110.20:9092')
+# ====================================================
+#                      Web Server
+# ====================================================
 
+hostName = '0.0.0.0'
+serverPort = 8080
 
+class MyServer(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(bytes("<!DOCTYPE html><html><head><title>metrics_exporter</title><style>body{width:30em;margin: 0 auto;font-family: Tahoma, Verdana, Arial, sans-serif;}</style></head><body><h1>Welcome to the Metrics Exporter!</h1><p><em>Phantasie ist wichtiger als Wissen. Wissen ist begrenzt, Phantasie aber umfa&#223t die ganze Welt.</em></p><p><em>Albert Einstein.</em></p><p>Die Zukunft&#169</p></body></html>","utf-8"))
 
+if __name__ == "__main__":
+    webServer = HTTPServer((hostName, serverPort), MyServer)
+
+    try:
+        webServer.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    webServer.server_close()
+    print("Server stopped.")

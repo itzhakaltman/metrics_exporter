@@ -1,17 +1,15 @@
-# https://towardsdatascience.com/from-novice-to-expert-how-to-write-a-configuration-file-in-python-273e171a8eb3
-
 # PUSHGATEWAY:
   PGW HOST: 10.210.110.32
   PGW PORT: 9091
-  JOB NAME: demo_pg_job
-  LABEL NAME: instance
-  LABEL VALUE: demo_instance
 
 # KAFKA
-  KAFKA IP: 10.210.110.20
-  KAFKA PORT: 9092
+  BOOTSTRAP SERVER: 10.210.110.20:9092
   TOPIC: m-exp
+  GROUP ID: my-group
   KEY: TEST
 
 # METRICS
   METRIC NAME: demo_metric
+  JOB NAME: demo_pg_job
+  LABEL NAME: instance
+  LABEL VALUE: demo_instance

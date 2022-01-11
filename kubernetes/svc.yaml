@@ -7,13 +7,10 @@ metadata:
     name: m-exp
 spec:
   type: LoadBalancer
-#  loadBalancerIP: 10.10.10.10
+  loadBalancerIP: 10.210.110.26
   ports:
     - port: 8080
       targetPort: 8080
       name: m-exp
-    - port: 8090
-      targetPort: 8090
-      name: m-exp2
   selector:
     name: m-exp
