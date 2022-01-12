@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import yaml
+import os
 
 config_file = '/Users/itzhak/Documents/GitHub/metrics_exporter/config/config.yaml'
 

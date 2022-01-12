@@ -49,7 +49,7 @@ consumer.subscribe(pattern='^awesome.*')
 #                      Web Server
 # ====================================================
 
-hostName = '0.0.0.0'
+hostName = 'localhost'
 serverPort = 8080
 
 class MyServer(BaseHTTPRequestHandler):

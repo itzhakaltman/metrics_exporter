@@ -4,12 +4,12 @@
 
 # KAFKA
   BOOTSTRAP SERVER: 10.210.110.20:9092
-  TOPIC: m-exp
+  TOPIC: Die_Zukunft
   GROUP ID: my-group
-  KEY: TEST
+  KEY: ZUKUNFT
 
 # METRICS
-  METRIC NAME: demo_metric
-  JOB NAME: demo_pg_job
+  METRIC NAME: zukunft
+  JOB NAME: zukunft_test
   LABEL NAME: instance
-  LABEL VALUE: demo_instance
+  LABEL VALUE: zukunft_instance
