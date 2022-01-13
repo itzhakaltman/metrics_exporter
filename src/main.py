@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from kafka import KafkaConsumer
 import requests
@@ -44,27 +43,3 @@ KafkaConsumer(consumer_timeout_ms=1000)
 # Subscribe to a regex topic pattern
 consumer = KafkaConsumer()
 consumer.subscribe(pattern='^awesome.*')
-
-# ====================================================
-#                      Web Server
-# ====================================================
-
-hostName = 'localhost'
-serverPort = 8080
-
-class MyServer(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(bytes("<!DOCTYPE html><html><head><title>metrics_exporter</title><style>body{width:30em;margin: 0 auto;font-family: Tahoma, Verdana, Arial, sans-serif;}</style></head><body><h1>Welcome to the Metrics Exporter!</h1><p><em>Phantasie ist wichtiger als Wissen. Wissen ist begrenzt, Phantasie aber umfa&#223t die ganze Welt.</em></p><p><em>Albert Einstein.</em></p><p>Die Zukunft&#169</p></body></html>","utf-8"))
-
-if __name__ == "__main__":
-    webServer = HTTPServer((hostName, serverPort), MyServer)
-
-    try:
-        webServer.serve_forever()
-    except KeyboardInterrupt:
-        pass
-    webServer.server_close()
-    print("Server stopped.")
