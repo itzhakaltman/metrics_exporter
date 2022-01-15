@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: m-exp
-  namespace: default
+  namespace: zukunft
   labels:
     name: m-exp
 spec:
@@ -21,13 +21,11 @@ spec:
          configMap:
           name: m-exp-config
       containers:
-        - name: drm
-          image: xxx/xxx:0.0.0
+        - name: m-exp
+          image: zukunft/metrics_exporter:0.0.0
 #          imagePullPolicy: Always
           volumeMounts:
           - name: config-volume
             subPath: config.yaml
-            mountPath: "/config/config.yaml"
-      imagePullSecrets:
-        - name: xxx
+            mountPath: "/config.yaml"
       dnsPolicy: ClusterFirstWithHostNet

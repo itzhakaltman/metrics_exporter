@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import json
 from kafka import KafkaConsumer
 import requests
@@ -16,9 +14,9 @@ consumer = KafkaConsumer(KAFKA_TOPIC,
 for message in consumer:
     # message value and key are raw bytes -- decode if necessary!
     # e.g., for unicode: `message.value.decode('utf-8')`
-    # print("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
-    #                                      message.offset, message.key,
-    #                                      message.value))
+    print("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
+                                         message.offset, message.key,
+                                         message.value))
     message_value_string = message.value.decode("utf-8")
     message_value_dict = json.loads(message_value_string)
     message_value_value = message_value_dict[METRIC_NAME]
@@ -26,7 +24,6 @@ for message in consumer:
     data = str(METRIC_NAME) + ' ' + str(message_value_value) + '\n'
     print(data)
     request = requests.post(url=API_ENDPOINT, data=data)
-
 
 # consume earliest available messages, don't commit offsets
 KafkaConsumer(auto_offset_reset='earliest', enable_auto_commit=False)
