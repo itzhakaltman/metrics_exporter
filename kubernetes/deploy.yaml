@@ -22,7 +22,7 @@ spec:
           name: m-exp-config
       containers:
         - name: m-exp
-          image: zukunft/metrics_exporter:0.0.0
+          image: zukunft/metrics_exporter:1.2.0
 #          imagePullPolicy: Always
           volumeMounts:
           - name: config-volume
