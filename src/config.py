@@ -3,10 +3,10 @@
 import yaml
 import os
 
-# config_file = '/config.yaml'
+config_file = '/config.yaml'
 
 
-config_file = '/Users/itzhak/Documents/GitHub/metrics_exporter/config/config.yaml'
+# config_file = '/Users/itzhak/Documents/GitHub/metrics_exporter/config/config.yaml'
 
 def read_yaml(config_file):
     with open(config_file, "r") as f:

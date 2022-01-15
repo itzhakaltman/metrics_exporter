@@ -12,3 +12,4 @@ COPY /config .
 EXPOSE 8080
 ENV PATH=/root/.local:$PATH
 CMD ["python3", "-u", "./main.py", "./web.py"]
+CMD ["python3", "-u", "./web.py"]

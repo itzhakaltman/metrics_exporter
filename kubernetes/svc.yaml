@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: m-exp
-  namespace: default
+  namespace: zukunft
   labels:
     name: m-exp
 spec:
@@ -11,6 +11,7 @@ spec:
   ports:
     - port: 8080
       targetPort: 8080
+      protocol: TCP
       name: m-exp
   selector:
     name: m-exp
