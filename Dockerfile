@@ -9,7 +9,5 @@ WORKDIR /
 COPY --from=builder /root/.local /root/.local
 COPY /src .
 COPY /config .
-EXPOSE 8080
 ENV PATH=/root/.local:$PATH
-CMD ["./start.sh"]
 CMD ["python3", "-u", "./main.py"]
