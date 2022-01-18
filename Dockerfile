@@ -10,4 +10,5 @@ COPY --from=builder /root/.local /root/.local
 COPY /src .
 COPY /config .
 ENV PATH=/root/.local:$PATH
-CMD ["python3", "-u", "./main.py"]
+CMD python3 -u ./main.py
+CMD python3 -u ./web.py
