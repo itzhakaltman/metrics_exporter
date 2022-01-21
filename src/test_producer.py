@@ -20,4 +20,4 @@ for e in range(2620269952):
     data = {METRIC_NAME: random_number}
     producer.send(KAFKA_TOPIC, value=data, key=kafka_key)
     print(data)
-    sleep(5)
+    sleep(15)
