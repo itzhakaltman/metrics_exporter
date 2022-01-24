@@ -21,11 +21,11 @@ spec:
          configMap:
           name: m-exp-config
       containers:
-        - name: m-exp
-          image: zukunft/metrics_exporter:1.2.0
+        - name: exporter
+          image: zukunft/metrics_exporter:1.5.08
 #          imagePullPolicy: Always
           volumeMounts:
           - name: config-volume
             subPath: config.yaml
-            mountPath: "/config.yaml"
+            mountPath: "/config/config.yaml"
       dnsPolicy: ClusterFirstWithHostNet

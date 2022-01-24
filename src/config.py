@@ -1,6 +1,6 @@
 import yaml
 
-config_file = '/config.yaml'
+config_file = '/config/config.yaml'
 
 # config_file = '/Users/itzhak/Documents/GitHub/metrics_exporter/config/config.yaml'
 

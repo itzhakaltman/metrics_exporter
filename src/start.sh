@@ -1,3 +1,4 @@
-python3 main.py &
-python3 web.py &
+cat /src/start.txt
+python3 /src/main.py &
+python3 /src/web.py &
 wait

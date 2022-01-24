@@ -7,8 +7,8 @@ RUN pip install --user -r requirements.txt
 FROM python:3.8-slim
 WORKDIR /
 COPY --from=builder /root/.local /root/.local
-COPY /src .
-COPY /config .
+COPY src/ /src
+COPY config/ config/
 EXPOSE 8080
 ENV PATH=/root/.local:$PATH
-CMD sh start.sh
+CMD sh /src/start.sh
