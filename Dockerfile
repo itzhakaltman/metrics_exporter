@@ -1,5 +1,5 @@
 # sudo docker buildx build -t metrics_exporter . --platform linux/amd64
-# sudo docker tag metrics_exporter zukunft/metrics_exporter:1.3.01
+# sudo docker tag metrics_exporter zukunft/metrics_exporter:1.5.10
 
 FROM python:3.8 AS builder
 COPY requirements.txt .
